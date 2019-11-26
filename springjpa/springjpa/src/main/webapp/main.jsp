@@ -25,4 +25,6 @@ Get All Students </p>
 <p><input type = "text" name="name"></p>
 <p><input type = "submit" value = "submit"></p>
 </form>
+
+<a href = "insert.jsp">Insert a Student</a>
 </body></html>

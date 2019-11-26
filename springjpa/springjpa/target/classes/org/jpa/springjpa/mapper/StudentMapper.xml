@@ -1,0 +1,42 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace = "org.jpa.springjpa.mapper.StudentMapper">
+	<resultMap id = "result" type = "Student">            
+   </resultMap>
+   <resultMap type="Student" id="list">
+  
+   </resultMap>
+   <insert id = "insert">
+      INSERT INTO STUDENT (ID,NAME, BRANCH, PERCENTAGE, PHONE, EMAIL ) VALUES (#{id}, #{name}, #{branch}, #{percentage}, #{phone}, #{email});
+			
+      <selectKey keyProperty = "id" resultType = "int" order = "AFTER">
+         select last_insert_id() as id
+      </selectKey>   
+			
+   </insert>
+   <select id = "getById"  resultMap = "result">
+      SELECT * FROM STUDENT WHERE ID = #{id};
+   </select>
+    <select id = "getByIdandName" parameterType = "Student" resultMap = "result">
+      SELECT * FROM STUDENT WHERE ID = #{id} AND 
+      <if test = "name != null">
+      name LIKE #{name}
+   </if> 
+   </select>
+   <select id = "getAll" resultMap = "result">
+      SELECT * FROM STUDENT; 
+   </select>
+   <select id = "getByName" resultMap = "result">
+
+    SELECT * FROM STUDENT		 
+   <if test = "_parameter != null">
+      WHERE name LIKE #{name}
+   </if>
+
+</select>
+    	
+</mapper>

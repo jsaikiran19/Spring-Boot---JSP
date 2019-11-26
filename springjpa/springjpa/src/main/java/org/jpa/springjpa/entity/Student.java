@@ -3,8 +3,13 @@ package org.jpa.springjpa.entity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "STUDENT")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Student {
 	@Id
 	private Integer id;
@@ -13,6 +18,16 @@ public class Student {
 	private int percentage;
 	private int phone;
 	private String email;
+	
+//	public Student(Integer id, String name, String branch, int percentage, int phone, String email) {
+//		super();
+//		this.id = id;
+//		this.name = name;
+//		this.branch = branch;
+//		this.percentage = percentage;
+//		this.phone = phone;
+//		this.email = email;
+//	}
 	public int getId() {
 		return id;
 	}
